@@ -72,6 +72,11 @@ object Dependencies {
         "com.google.guava" % "guava" % "27.0.1-jre"
       ) ++ JacksonDatabind // consul depends on insecure version of jackson
 
+    val NacosClient = Seq(
+        //License: Apache 2.0
+        "com.alibaba.nacos" % "nacos-client" % "1.1.3"
+      )
+
     val AwsJavaSdkEc2Ecs = Seq(
         "com.amazonaws" % "aws-java-sdk-ec2" % "1.11.292",
         "com.amazonaws" % "aws-java-sdk-ecs" % "1.11.292"
@@ -94,6 +99,15 @@ object Dependencies {
       DependencyGroups.AkkaDiscovery ++
       DependencyGroups.AkkaTesting ++
       DependencyGroups.ConsulClient ++
+      DependencyGroups.Logging.map(_ % "test")
+  )
+
+  val DiscoveryNacos = Seq(
+    libraryDependencies ++=
+      DependencyGroups.AkkaActor ++
+      DependencyGroups.AkkaDiscovery ++
+      DependencyGroups.AkkaTesting ++
+      DependencyGroups.NacosClient ++
       DependencyGroups.Logging.map(_ % "test")
   )
 

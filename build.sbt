@@ -11,6 +11,7 @@ lazy val `akka-management-root` = project
     `akka-discovery-aws-api`,
     `akka-discovery-aws-api-async`,
     `akka-discovery-consul`,
+    `akka-discovery-nacos`,
     `akka-discovery-kubernetes-api`,
     `akka-discovery-marathon-api`,
     `akka-management`,
@@ -73,6 +74,15 @@ lazy val `akka-discovery-consul` = project
     name := "akka-discovery-consul",
     organization := "com.lightbend.akka.discovery",
     Dependencies.DiscoveryConsul
+  )
+
+lazy val `akka-discovery-nacos` = project
+  .in(file("discovery-nacos"))
+  .enablePlugins(AutomateHeaderPlugin)
+  .settings(
+    name := "akka-discovery-nacos",
+    organization := "com.lightbend.akka.discovery",
+    Dependencies.DiscoveryNacos
   )
 
 // gathers all enabled routes and serves them (HTTP or otherwise)
